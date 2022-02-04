@@ -1,11 +1,13 @@
-import React , { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Content from './content';
 
 
 
 function Home() {
 
   const [count, setCount] = useState(0)
-  const [item , setItem] = useState(0)
+  const [item, setItem] = useState(0)
+  const [contentIsOpen, setIsOpen] = useState(true)
 
 
 
@@ -26,6 +28,9 @@ function Home() {
 
 
 
+
+
+
   console.log(`rerender home component !`)
 
   return (
@@ -35,11 +40,30 @@ function Home() {
         Click me
       </button>
 
-      <br/>
+      <br />
 
       <button onClick={() => setItem(item + 1)}>
         Click Item {item}
       </button>
+
+      <br />
+
+      <button onClick={() => setIsOpen(false)}>
+        Click Close Content
+      </button>
+
+      <div style={{ 'padding': '1%' }}></div>
+      {
+        contentIsOpen ?
+
+        <Content />
+
+        :
+
+        <div></div>
+      }
+    
+
     </div>
   );
 }
